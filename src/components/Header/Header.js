@@ -52,7 +52,9 @@ const SubscribeContainer = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 8px;
-  @media ${QUERIES.desktopAndUp} {
+  justify-self: end;
+  align-self: end;
+  @media ${QUERIES.laptopAndUp} {
     display: flex;
   }
 `;
@@ -62,38 +64,6 @@ const SubscribeText = styled.a`
   font-style: italic;
   text-decoration: underline;
   cursor: pointer;
-`;
-
-const DesktopAction = styled.div`
-  display: none;
-  gap: 24px;
-
-  /*
-  FIX: Remove the inline spacing that comes with
-  react-feather icons.
-*/
-  svg {
-    display: block;
-  }
-
-  @media ${QUERIES.desktopAndUp} {
-    display: flex;
-  }
-`;
-
-const SuperHeader = styled.div`
-  padding: 16px 0;
-  background: var(--color-gray-900);
-  color: white;
-
-  @media ${QUERIES.desktopAndUp} {
-    display: none;
-  }
-`;
-
-const Row = styled(MaxWidthWrapper)`
-  display: flex;
-  justify-content: space-between;
 `;
 
 const ActionGroup = styled.div`
@@ -109,15 +79,38 @@ const ActionGroup = styled.div`
   }
 `;
 
-const MainHeader = styled(MaxWidthWrapper)`
+const DesktopAction = styled(ActionGroup)`
+  display: none;
+  @media ${QUERIES.laptopAndUp} {
+    display: flex;
+  }
+`;
+
+const SuperHeader = styled.div`
+  padding: 16px 0;
+  background: var(--color-gray-900);
+  color: white;
+
+  @media ${QUERIES.laptopAndUp} {
+    display: none;
+  }
+`;
+
+const Row = styled(MaxWidthWrapper)`
   display: flex;
+  justify-content: space-between;
+`;
+
+const MainHeader = styled(MaxWidthWrapper)`
+  display: grid;
   align-items: center;
-  justify-content: center;
+
   margin-top: 32px;
   margin-bottom: 48px;
+  grid-template-columns: 1fr;
 
-  @media ${QUERIES.desktopAndUp} {
-    justify-content: space-between;
+  @media ${QUERIES.laptopAndUp} {
+    grid-template-columns: 1fr auto 1fr;
   }
 `;
 

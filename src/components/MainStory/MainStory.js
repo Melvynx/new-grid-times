@@ -1,14 +1,8 @@
 import React from 'react';
 import styled from 'styled-components/macro';
+import { QUERIES } from '../../constants';
 
-const MainStory = ({
-  id,
-  title,
-  image,
-  location,
-  abstract,
-  ...delegated
-}) => {
+const MainStory = ({ id, title, image, location, abstract, ...delegated }) => {
   return (
     <Wrapper {...delegated}>
       <a href={`/story/${id}`}>
@@ -41,9 +35,23 @@ const Heading = styled.h2`
 `;
 
 const Abstract = styled.p`
+  --number-of-line: 8;
   font-size: 1rem;
   margin-bottom: 1em;
   white-space: pre-wrap;
+
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: var(--number-of-line);
+  overflow: hidden;
+
+  @media ${QUERIES.tabletAndUp} {
+    -webkit-line-clamp: calc(var(--number-of-line) * 2);
+  }
+
+  @media ${QUERIES.laptopAndUp} {
+    -webkit-line-clamp: calc(var(--number-of-line) * 2);
+  }
 `;
 
 const Location = styled.span`
